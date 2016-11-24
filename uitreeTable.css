@@ -1,0 +1,106 @@
+.ui-tree-table.ztree li ul {
+    padding: 0;
+}
+
+.ui-tree-table.ztree li a {
+    width: 100%;
+    cursor: auto;
+}
+.ui-tree-table.ztree li a span{
+    font-size: 14px;
+}
+/*高度*/
+.ui-tree-table.ztree li a,
+.ui-tree-table.ztree li a span.ui-cel {
+    height: 30px;
+    line-height: 30px;
+    padding: 0;
+}
+/*宽度*/
+.ui-tree-table.ztree .ui-check {
+    width: 50px;
+    border-left:1px solid #ddd;
+}
+.ui-tree-table.ztree li a .ui-name,
+.ui-tree-table.ztree li a .ui-cel {
+    display: inline-block;
+    width: 200px;
+    height: 100%;
+}
+/*边框*/
+.ui-tree-table.ztree li {
+    border-top: 1px solid #ddd;
+}
+.ui-tree-table.ztree li a .ui-name,
+.ui-tree-table.ztree li a .ui-cel,
+.ui-operate{
+    border-right: 1px solid #ddd;
+    float:left;
+    margin:0;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    box-sizing:border-box;
+}
+.ui-tree-table.ztree>li:last-child {
+    border-bottom: 1px solid #ddd;
+}
+/*文字居中*/
+.ui-tree-table.ztree li a .ui-cel{
+	text-align: center;
+}
+/*树，本体样式*/
+.ui-tree-table.ztree .ui-indent {
+    display: inline-block;
+    width: 15px;
+}
+.ui-tree-table.ztree li span[treenode_ico] {
+    margin-top: 6px;
+}
+/*表头样式*/
+.ui-tree-table.ztree>li a.ui-title{
+    background-color: #f5f6f7;
+}
+.ui-tree-table.ztree>li a.ui-title span {
+    color: #687ba4;
+    font-weight: bold;
+}
+
+/*选中样式*/
+.ui-tree-table.ztree li a:hover,
+.ui-tree-table.ztree li a.curSelectedNode {
+    height: auto;
+    border: none;
+    background-color: #d2ebfa
+}
+/*勾选框样式*/
+.ui-tree-table.ztree .ui-title .ui-check:before{
+    width: 0;
+}
+.ui-tree-table.ztree .ui-check:before{
+    content: "";
+    vertical-align: sub;
+    background-image: url(icon-table.png);
+    width: 17px;
+    height: 17px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position-y:-50px;
+    background-position-x:-0px;
+}
+.ui-tree-table.ztree li a.curSelectedNode .ui-check:before{
+    content: "";
+    background-position-x:-50px;
+}
+/*操作列样式*/
+.ui-tree-table.ztree .ui-operate{
+	display:inline-block;
+	text-align:center;
+}
+.ui-tree-table.ztree li a .ui-operate>a{
+	width:auto;
+	padding:0 10px;
+	color:#428bca;
+}
+.ui-tree-table.ztree li a .ui-operate>a:hover{
+	color:#2a6496;
+};

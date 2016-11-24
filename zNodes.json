@@ -1,8 +1,4 @@
-[{
-     "id": "title",
-      "name": "名称",
-      "extend1": "描述"
-  }, {
+[ {
       "id": 1,
       "name": "Hover DOM",
       "open": true,
@@ -10,6 +6,7 @@
       "children": [{
               "id": 11,
               "name": "button 1-1",
+              "icon":"",
               "children": [{
                   "id": 112,
                   "name": "button 1-2"
@@ -42,6 +39,7 @@
       "id": 2,
       "name": "General DOM",
       "open": true,
+      "parentId":1,
       "children": [{
           "id": 21,
           "name": "button 2-1"

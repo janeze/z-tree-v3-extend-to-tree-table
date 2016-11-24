@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<HTML>
+
+<HEAD>
+    <TITLE>tree-table demo</TITLE>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="bower_components/z-tree.v3/css/zTreeStyle/zTreeStyle.css" type="text/css">
+    <link rel="stylesheet" href="uitreeTable.css" type="text/css">
+    <script type="text/javascript" src="bower_components/z-tree.v3/js/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript" src="bower_components/z-tree.v3/js/jquery.ztree.all.js"></script>
+   <!-- <script type="text/javascript" src="../../bower_components/z-tree.v3/js/jquery.ztree.core.js"></script>
+    <script type="text/javascript" src="../../bower_components/z-tree.v3/js/jquery.ztree.excheck.js"></script>
+    <script type="text/javascript" src="../../bower_components/z-tree.v3/js/jquery.ztree.exedit.js"></script>-->
+   <script type="text/javascript" src="uitreeTable.js"></script>
+   <script>
+   $(document).ready(function() {
+	   var treeTable=new TreeTable({
+	   		id:"treeDemo",
+	   		autoUpdate:true,
+	   		url:"zNodes.json",
+	   		titleText:"名称",titleText:"名称",
+	   		titleWidth:"35%",
+	   		checkWidth:"5%",
+	   		tableCel : [
+			      { "name": "extend1","text":"描述1", "width": "20%" },
+			      { "name": "extend2","text":"描述2", "width": "20%" },
+			      { "name": "isOperate","text":"操作", "width": "20%" ,"value":'<a href="javascript:void(0)" name="tree_edit">编辑</a><a href="javascript:void(0)" name="tree_del">删除</a>'}
+			  ],
+			events:[["click",'[name="tree_edit"]',"edit"],["click",'[name="tree_del"]',"del"]],
+			edit:function(){
+				debugger
+			},del:function(){
+				debugger
+			}
+	   });
+   });
+   </script>
+</HEAD>
+
+<BODY>
+    <ul id="treeDemo" class="ztree"></ul>
+</BODY>
+
+</HTML>
