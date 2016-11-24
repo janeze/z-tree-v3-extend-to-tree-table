@@ -1,0 +1,59 @@
+.ztree li ul {
+    padding: 0;
+}
+
+.ztree li a {
+    width: 100%;
+}
+/*高度*/
+.ztree li a,
+.ztree li a span.ui-cel {
+    height: 30px;
+    line-height: 30px;
+    padding: 0;
+}
+/*宽度*/
+.ui-check {
+    width: 50px !important;
+}
+.ztree li a .ui-name,
+.ztree li a .ui-cel {
+    display: inline-block;
+    width: 300px;
+    height: 100%;
+}
+/*边框*/
+.ztree li {
+    border-top: 1px solid #ddd;
+}
+.ztree li a .ui-name,
+.ztree li a .ui-cel{
+    border-right: 1px solid #ddd;
+}
+.ztree>li:last-child {
+    border-bottom: 1px solid #ddd;
+}
+/*文字居中*/
+.ztree li a .ui-cel{
+	text-align: center;
+}
+/*树，本体样式*/
+.ui-indent {
+    display: inline-block;
+    width: 12px;
+}
+.ztree li span[treenode_ico] {
+    margin-top: 6px;
+}
+/*表头样式*/
+.ztree>li:first-child a span {
+    font-size: 14px;
+    font-weight: bold;
+}
+/*选中样式*/
+.ztree li a:hover,
+.ztree li a.curSelectedNode {
+    height: auto;
+    border: none;
+    background-color: #d2ebfa
+}

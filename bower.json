@@ -1,0 +1,9 @@
+{
+  "name": "z-tree-expand",
+  "version": "0.0.0",
+  "description":" expand z-tree",
+  "author":"dyz",
+  "dependencies":{
+    "z-tree.v3":"3.5.24",
+  }
+}
