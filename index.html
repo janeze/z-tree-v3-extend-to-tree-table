@@ -28,9 +28,13 @@
 			  ],
 			events:[["click",'[name="tree_edit"]',"edit"],["click",'[name="tree_del"]',"del"]],
 			edit:function(){
-				debugger
+				var checkRow=this.getCheckRow()[0];
+				var name=checkRow.name;
+				alert("编辑行"+name);
 			},del:function(){
-				debugger
+				var checkRow=this.getCheckRow()[0];
+				var name=checkRow.name;
+				alert("删除行"+name);
 			}
 	   });
    });
