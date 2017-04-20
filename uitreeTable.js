@@ -37,26 +37,13 @@
         	}
         },	
         callback: {
-            beforeClick: function(treeId, treeNode) {
+            beforeClick: function(treeId, treeNode,clickFlag) {
                 if (treeNode.id === "title") {
                     return false;
                 }
             },
-            /*  onClick:function(event, treeId, treeNode, clickFlag){
-                var aId=treeNode.tId+"_a";
-                var aEle=$("#"+aId);
-
-                var zTree=$.fn.zTree.getZTreeObj(treeId);
-                var zNode=zTree.getNodeByParam("id",treeNode.tId);
-                if(aEle.hasClass("ui-checked")){
-                  zTree.cancelSelectedNode(zNode);
-                  aEle.removeClass("ui-checked");
-                }else{
-                  zTree.selectNode(zNode,true);
-                  aEle.addClass("ui-checked");
-                }
-                
-              }*/
+            onClick:function(event, treeId, treeNode, clickFlag){
+            }
         }
     };
 
@@ -127,7 +114,7 @@
         //修改原来的树控件结构
         aEle.append($('<div class="ui-name" style="width:'+titleWidth+'">' + indentStrs + '</div>').append(aEle.children()));
         //向树控件添加checkbox
-        aEle.prepend('<span class="ui-cel ui-check" style="width:'+checkWidth+'"></span>');
+        aEle.prepend('<span class="ui-cel ui-check" style="width:'+checkWidth+'" title="单击时同时按下 Ctrl 键可以选中多个节点"></span>');
         
         //向树控件添加其他列
         var tableCel = that.tableCel||[];

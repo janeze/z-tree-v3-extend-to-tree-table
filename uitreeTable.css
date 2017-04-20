@@ -84,7 +84,7 @@
     height: 17px;
     display: inline-block;
     background-repeat: no-repeat;
-    background-position-y:-50px;
+    background-position-y:-0px;
     background-position-x:-0px;
 }
 .ui-tree-table.ztree li a.curSelectedNode .ui-check:before{
