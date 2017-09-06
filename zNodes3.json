@@ -1,11 +1,11 @@
 [{
 	"id":"expend3_0",
-	"name":"expend3_0 text",
+	"text":"expend3_0 text",
 	"children":[{
 		"id":"expend3_0_1",
-		"name":"expend3_0_1 text"
+		"text":"expend3_0_1 text"
 	},{
 		"id":"expend3_0_2",
-		"name":"expend3_0_2 text"
+		"text":"expend3_0_2 text"
 	}]
 }]

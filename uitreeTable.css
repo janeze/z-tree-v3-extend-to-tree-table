@@ -12,7 +12,8 @@
 /*高度*/
 .ui-tree-table.ztree li a,
 .ui-tree-table.ztree li a span.ui-cel {
-    height: 30px;
+    min-height: 30px;
+    height: auto;
     line-height: 30px;
     padding: 0;
 }
@@ -68,7 +69,6 @@
 /*选中样式*/
 .ui-tree-table.ztree li a:hover,
 .ui-tree-table.ztree li a.curSelectedNode {
-    height: auto;
     border: none;
     background-color: #d2ebfa
 }
@@ -103,4 +103,14 @@
 }
 .ui-tree-table.ztree li a .ui-operate>a:hover{
 	color:#2a6496;
-};
+}
+/*子树*/
+.ui-tree-table.ztree.ui-inner-tree{
+    padding: 0;
+}
+.ui-tree-table.ui-inner-tree.ztree>li:first-child{
+    border-top: none;
+}
+.ui-tree-table.ui-inner-tree.ztree>li:last-child{
+    border-bottom: none;
+}

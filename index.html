@@ -14,25 +14,27 @@
     <script type="text/javascript" src="uitreeTable.js"></script>
     <script>
     $(document).ready(function() {
+        //宽度请统一用百分比
         var treeTable = new TreeTable({
-            id: "treeDemo",
-            autoUpdate: true,
-
+            id: "treeDemo",//树id
+            autoUpdate: true,//
+            //一级树属性(第一列)
             type:"get",
             url: "zNodes.json",
             ajaxData:{},
             zNodes:[],
-
+            //表头属性
             titleId:"title",
             titleText: "名称",
             titleWidth: "20%",
-            checkWidth: "5%",
-
+            //勾选列属性
+            checkWidth: 0,
+            //树的扩展列
             tableCel: [{
                     type: "string",
                     name: "extend1",
                     text: "描述1",
-                    width: "15%",
+                    width: "20%",
                     blankText:"--"
                 },
                 {
@@ -41,9 +43,20 @@
                     text: "描述2",
                     width: "20%",
                     param: {
+                      /*  type:"get",
                         url: "zNodes2.json",
-                        ajaxData:{},
-                        zNodes:[]
+                        ajaxData:{},*/
+                        zNodes:[{
+                            "id":"expend2_0",
+                            "text":"描述2 子树",
+                            "children":[{
+                                "id":"expend2_0_1",
+                                "text":"expend2_0_1 text"
+                            },{
+                                "id":"expend2_0_2",
+                                "text":"expend2_0_2 text"
+                            }]
+                        }]
                     }
                 },
                 {
@@ -52,9 +65,17 @@
                     text: "描述3",
                     width: "20%",
                     param: {
-                        url: "zNodes3.json",
-                        ajaxData:{},
-                        zNodes:[]
+                        zNodes:[{
+                            "id":"expend3_0",
+                            "text":"描述3 子树",
+                            "children":[{
+                                "id":"expend3_0_1",
+                                "text":"expend3_0_1 text"
+                            },{
+                                "id":"expend3_0_2",
+                                "text":"expend3_0_2 text"
+                            }]
+                        }]
                     }
                 },
                 {
@@ -84,6 +105,7 @@
             },
             afterUpdate:function(){},
         });
+
     });
     </script>
 </HEAD>

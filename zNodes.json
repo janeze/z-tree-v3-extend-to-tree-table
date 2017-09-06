@@ -1,59 +1,75 @@
-[ {
-      "id": 1,
-      "name": "Hover DOM",
-      "open": true,
-      "extend1": "aaa",
-      "children": [{
-              "id": 11,
-              "name": "button 1-1",
-              "icon":"",
-              "children": [{
-                  "id": 112,
-                  "name": "button 1-2"
-              }, {
-                  "id": 113,
-                  "name": "select box 1-3"
-              }, {
-                  "id": 1141,
-                  "name": "text 1-4-1"
-              } ]
-          }, {
-              "id": 12,
-              "name": "button 1-2"
-          }, {
-              "id": 13,
-              "name": "select box 1-3"
-          }, {
-              "id": 141,
-              "name": "text 1-4-1"
-          }, {
-              "id": 142,
-              "name": "text 1-4-2"
-          }, {
-              "id": 15,
-              "name": "hyperlinks 1-5"
-          }
+[
+{
+    "id": 1,
+    "text": "Hover DOM",
+    "open": true,
+    "extend1": "aaa",
+    "children": [
+        {
+            "id": 11,
+            "text": "button 1-1",
+            "icon": "",
+            "children": [
+            {
+                "id": 112,
+                "text": "button 1-2"
+            },
+            {
+                "id": 113,
+                "text": "select box 1-3"
+            },
+            {
+                "id": 1141,
+                "text": "text 1-4-1"
+            }]
+        },
+        {
+            "id": 12,
+            "text": "button 1-2"
+        },
+        {
+            "id": 13,
+            "text": "select box 1-3"
+        },
+        {
+            "id": 141,
+            "text": "text 1-4-1"
+        },
+        {
+            "id": 142,
+            "text": "text 1-4-2"
+        },
+        {
+            "id": 15,
+            "text": "hyperlinks 1-5"
+        }
 
-      ]
-  }, {
-      "id": 2,
-      "name": "General DOM",
-      "open": true,
-      "parentId":1,
-      "children": [{
-          "id": 21,
-          "name": "button 2-1"
-      }, {
-          "id": 22,
-          "name": "button 2-2"
-      }, {
-          "id": 23,
-          "name": "select box 2-3"
-      }, {
-          "id": 24,
-          "name": "text 2-4"
-      }, {
-          "id": 25,
-          "name": "hyperlinks 2-5"
-      }]
-  }]
+    ]
+},
+{
+    "id": 2,
+    "text": "General DOM",
+    "open": true,
+    "parentId": 1,
+    "children": [
+    {
+        "id": 21,
+        "text": "button 2-1"
+    },
+    {
+        "id": 22,
+        "text": "button 2-2"
+    },
+    {
+        "id": 23,
+        "text": "select box 2-3"
+    },
+    {
+        "id": 24,
+        "text": "text 2-4"
+    },
+    {
+        "id": 25,
+        "text": "hyperlinks 2-5"
+    }]
+}]
