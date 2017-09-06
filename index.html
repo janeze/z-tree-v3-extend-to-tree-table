@@ -28,55 +28,28 @@
             titleText: "名称",
             titleWidth: "20%",
             //勾选列属性
-            checkWidth: 0,
+            checkWidth: "5%",
             //树的扩展列
             tableCel: [{
                     type: "string",
                     name: "extend1",
                     text: "描述1",
-                    width: "20%",
-                    blankText:"--"
+                    width: "15%",
+                    blankText:"--"//默认值
                 },
                 {
-                    type: "tree",
+                    type: "string",
                     name: "extend2",
-                    text: "描述2",
-                    width: "20%",
-                    param: {
-                      /*  type:"get",
-                        url: "zNodes2.json",
-                        ajaxData:{},*/
-                        zNodes:[{
-                            "id":"expend2_0",
-                            "text":"描述2 子树",
-                            "children":[{
-                                "id":"expend2_0_1",
-                                "text":"expend2_0_1 text"
-                            },{
-                                "id":"expend2_0_2",
-                                "text":"expend2_0_2 text"
-                            }]
-                        }]
-                    }
+                    text: "时间",
+                    width: "25%",
+                    blankText:"2017-09-01 00:00:00"
                 },
                 {
-                    type: "tree",
+                    type: "string",
                     name: "extend3",
-                    text: "描述3",
-                    width: "20%",
-                    param: {
-                        zNodes:[{
-                            "id":"expend3_0",
-                            "text":"描述3 子树",
-                            "children":[{
-                                "id":"expend3_0_1",
-                                "text":"expend3_0_1 text"
-                            },{
-                                "id":"expend3_0_2",
-                                "text":"expend3_0_2 text"
-                            }]
-                        }]
-                    }
+                    text: "数字",
+                    width: "15%",
+                    blankText:"0"
                 },
                 {
                     type: "operate",
@@ -105,13 +78,110 @@
             },
             afterUpdate:function(){},
         });
-
+		//宽度请统一用百分比
+        var treeTable2 = new TreeTable({
+            id: "treeDemo2",//树id
+            autoUpdate: true,//
+            //一级树属性(第一列)
+            /*type:"get",
+            url: "zNodes.json",
+            ajaxData:{},*/
+            zNodes:[
+            	"titleObj",
+            	{id:"root00000",text:"隐藏的根节点"}
+            ],
+            //表头属性
+            titleId:"title",
+            titleText: "名称",
+            titleWidth: "0",
+            //勾选列属性
+            checkWidth: 0,
+            //树的扩展列
+            tableCel: [{
+            		type: "tree",
+                    name: "extend1",
+                    text: "描述1",
+                    width: "25%",
+                    param: {
+                      /*  type:"get",
+                        url: "zNodes2.json",
+                        ajaxData:{},*/
+                        zNodes:[{
+                            "id":"expend1_0",
+                            "text":"描述1 子树",
+                            "children":[{
+                                "id":"expend1_0_1",
+                                "text":"expend1_0_1 text"
+                            },{
+                                "id":"expend1_0_2",
+                                "text":"expend1_0_2 text"
+                            }]
+                        }]
+                    }
+            	},
+                {
+                    type: "tree",
+                    name: "extend2",
+                    text: "描述2",
+                    width: "25%",
+                    param: {
+                      /*  type:"get",
+                        url: "zNodes2.json",
+                        ajaxData:{},*/
+                        zNodes:[{
+                            "id":"expend2_0",
+                            "text":"描述2 子树",
+                            "children":[{
+                                "id":"expend2_0_1",
+                                "text":"expend2_0_1 text"
+                            },{
+                                "id":"expend2_0_2",
+                                "text":"expend2_0_2 text"
+                            }]
+                        }]
+                    }
+                },
+                {
+                    type: "tree",
+                    name: "extend3",
+                    text: "描述3",
+                    width: "25%",
+                    param: {
+                        zNodes:[{
+                            "id":"expend3_0",
+                            "text":"描述3 子树",
+                            "children":[{
+                                "id":"expend3_0_1",
+                                "text":"expend3_0_1 text"
+                            },{
+                                "id":"expend3_0_2",
+                                "text":"expend3_0_2 text"
+                            }]
+                        }]
+                    }
+                },{
+                	type:"string",
+                	name:"extend4",
+                	text:"数量",
+                	width:"25%",
+                	blankText:0
+                }
+            ],
+            events: [],
+            formatzNodes:function(nodes){//格式化zNodes
+            	return nodes;
+            },
+            afterUpdate:function(){},
+        });
     });
     </script>
 </HEAD>
 
 <BODY>
+	<p style="color:red">树1----一般用于简单数据展示，不设置列类型为tree,否则导致样式有问题（待解决）</p>
     <ul id="treeDemo" class="ztree"></ul>
+    <p style="color:red">树2----一般用于报表展示，多层级嵌套，嵌套的树之间不应该设置其他类型的数据，否则会导致样式有问题（待解决）</p>
+     <ul id="treeDemo2" class="ztree"></ul>
 </BODY>
 
 </HTML>

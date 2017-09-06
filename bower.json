@@ -4,6 +4,6 @@
   "description":" expand z-tree",
   "author":"dyz",
   "dependencies":{
-    "z-tree.v3":"3.5.24",
+    "z-tree.v3":"3.5.24"
   }
 }

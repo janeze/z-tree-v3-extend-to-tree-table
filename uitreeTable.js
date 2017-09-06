@@ -11,58 +11,14 @@
         IDMark_Remove = "_remove",
         IDMark_Ul = "_ul",
         IDMark_A = "_a";
-    //ztree配置
-    var setting = {
-        view: {
-            addDiyDom: null,
-            showLine: false,
-            showIcon:false,
-            selectedMulti: true
-        },
-        data: {
-            simpleData: {
-                enable:true,
-                idKey: "id",//一般需要具体设置
-                pIdKey: "parentId",//一般需要具体设置
-                rootPId: ""
-            },
-            key:{
-            	name:"text",//一般需要具体设置
-            	checked:"isDefault",
-            	url:false
-        	},
-        	keep:{
-        		leaf:false,
-        		parent:false
-        	}
-        },	
-        callback: {
-            beforeClick: function(treeId, treeNode,clickFlag) {
-                if (treeNode.id === "title") {
-                    return false;
-                }
-            },
-            onClick:function(event, treeId, treeNode, clickFlag){
-            },
-            beforeExpand:function( treeId, treeNode){
-                debugger
-            },
-            onExpand:function(event, treeId, treeNode){
-                debugger
-            },
-            beforeCollapse:function(treeId, treeNode){
-                debugger
-            },
-            onCollapse:function(event, treeId, treeNode){
-                debugger
-            }
-        }
-    };
+    var hasExpend=false;
+   
 
     function TreeTable(options) {
         if (!options || typeof options !== "object") {
             options = {};
         }
+        var setting=this.getDefaultSetting();
         this.initSetting(setting, options);
 
         this.element = $("#" + this.id);
@@ -98,6 +54,82 @@
             }
             this._events = [];
         },
+        getDefaultSetting:function(){
+        	 //ztree配置
+		    var setting = {
+		        view: {
+		            addDiyDom: null,
+		            showLine: false,
+		            showIcon:false,
+		            selectedMulti: true
+		        },
+		        data: {
+		            simpleData: {
+		                enable:true,
+		                idKey: "id",//一般需要具体设置
+		                pIdKey: "parentId",//一般需要具体设置
+		                rootPId: ""
+		            },
+		            key:{
+		            	name:"text",//一般需要具体设置
+		            	checked:"isDefault",
+		            	url:false
+		        	},
+		        	keep:{
+		        		leaf:false,
+		        		parent:false
+		        	}
+		        },	
+		        callback: {
+		            beforeClick: function(treeId, treeNode,clickFlag) {
+		                if (treeNode.id === "title") {
+		                    return false;
+		                }
+		            },
+		            onClick:function(event, treeId, treeNode, clickFlag){
+		            },
+		            beforeExpand:function( treeId, treeNode){
+		            	//兼容树的嵌套问题
+		            	if(hasExpend){
+		            		return false;
+		            	}else{
+		            		hasExpend=true;
+		            		return true;
+		            	}
+		            },
+		            onExpand:function(event, treeId, treeNode){
+		            	//兼容树的嵌套问题
+		            	if(hasExpend){
+		            		hasExpend=false;
+		            	}
+		            	if(!hasExpend){
+		            		return;
+		            	}
+		              
+		            },
+		            beforeCollapse:function(treeId, treeNode){
+		               //兼容树的嵌套问题
+		                if(hasExpend){
+		            		return false;
+		            	}else{
+		            		hasExpend=true;
+		            		return true;
+		            	}
+		            },
+		            onCollapse:function(event, treeId, treeNode){
+		                //兼容树的嵌套问题
+		                if(hasExpend){
+		            		hasExpend=false;
+		            	}
+		            	if(!hasExpend){
+		            		return;
+		            	}
+		              
+		            }
+		        }
+		    };
+        	return setting;
+        },
         initSetting: function(setting, options) {
         	for(var i in options){
         		if(i==="_events"){
@@ -122,33 +154,6 @@
         	}
             setting.view.addDiyDom=this.addDiyDom(this);
             this.setting = setting;
-        },
-        //获取zNodes数据
-        getAjaxData: function(callback) {
-            var that = this;
-            $.ajax({
-                type: that.type||"get",
-                url: that.url,
-                data:that.ajaxData||{},
-                success: function(zNodes) {
-                    zNodes = zNodes ? zNodes : [];
-                    if(!$.isArray(zNodes)){
-                    	zNodes=$.parseJSON(zNodes);
-                    }
-                    
-                    if(that.titleObj){
-                    	zNodes.unshift(that.titleObj);
-                    }
-                    callback.call(that,zNodes)
-                },
-                error: function(e) {
-                    alert(String(e));
-                }
-            });
-        },
-        //格式化树节点
-        formatzNodes:function(nodes){
-            return nodes;
         },
         //绘制树
         createTree:function(zNodes){
@@ -178,7 +183,7 @@
                 var indentStrs = '';
 
                 var checkWidth=that.checkWidth;
-                var titleWidth=that.titleWidth||"200px";
+                var titleWidth=that.titleWidth;
                 for (var i = 0; i < level; i++) {
                     indentStrs += indentStr;
                 }
@@ -192,7 +197,11 @@
                 //修改展开按钮结构位置
                 aEle.prepend(switchEle);
                 //修改原来的树控件结构，显示成树的层级间隔
-                aEle.append($('<div class="ui-cel ui-name" style="width:'+titleWidth+'">' + indentStrs + '</div>').append(aEle.children()));
+                var titleEle=$('<div class="ui-cel ui-name" style="width:'+titleWidth+'">' + indentStrs + '</div>');
+               	if(titleWidth==0||titleWidth==="0%"){
+               		titleEle.addClass("ui-tree-report");
+               	}
+                aEle.append(titleEle.append(aEle.children()));
                 //向树控件添加checkbox
                 if(checkWidth){
                     aEle.prepend('<span class="ui-cel ui-check" style="width:'+checkWidth+'" title="单击时同时按下 Ctrl 键可以选中多个节点"></span>');
@@ -200,8 +209,9 @@
                 
                 //向树控件添加其他列
                 var tableCel = that.tableCel||[],oneCel,innerTreeCel,type,isTitle,node;
-                for (var i = 0; i < tableCel.length; i++) {
                     isTitle=treeNode.isTitle;
+
+                for (var i = 0; i < tableCel.length; i++) {
                     oneCel=tableCel[i];
                     type=oneCel.type;
                     if(isTitle){//表头
@@ -286,7 +296,7 @@
             },0);
             return ele;
         },
-        createChildTree(id,width,param,tableCel){
+        createChildTree:function(id,width,param,tableCel){
             var type=param.type,
                 url=param.url,
                 ajaxData=param.ajaxData,
@@ -339,15 +349,45 @@
         destroy: function() {
             $.fn.zTree.destroy(this.id);
         },
+        //获取zNodes数据
+        getAjaxData: function(callback) {
+            var that = this;
+            $.ajax({
+                type: that.type||"get",
+                url: that.url,
+                data:that.ajaxData||{},
+                success: function(zNodes) {
+                    zNodes = zNodes ? zNodes : [];
+                    if(!$.isArray(zNodes)){
+                    	zNodes=$.parseJSON(zNodes);
+                    }
+                    callback.call(that,zNodes)
+                },
+                error: function(e) {
+                    alert(String(e));
+                }
+            });
+        },
+        //格式化树节点
+        formatzNodes:function(nodes){
+            return nodes;
+        },
         //更新树
         update: function() {
         	var that=this;
             if(that.url){//有url则异步获取数据
                 that.destroy();
                 that.getAjaxData(function(zNodes){
+                	if(that.titleObj){
+                    	zNodes.unshift(that.titleObj);
+                    }
                     that.createTree(zNodes);
                 });
             }else{//没有url，取静态zNodes参数
+            	if(that.titleObj&&that.zNodes[0]==="titleObj"){
+            			that.zNodes.shift();
+                    	that.zNodes.unshift(that.titleObj);
+                }
                 that.createTree(that.zNodes||[]);
             }
         },

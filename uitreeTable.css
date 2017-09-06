@@ -117,3 +117,7 @@
 .ui-tree-table.ui-inner-tree.ztree .ui-name{
     border-left: none;
 }
+/*报表树*/
+.ui-tree-table.ztree .ui-name.ui-tree-report{
+	border-left:none;
+}
