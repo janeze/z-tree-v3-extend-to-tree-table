@@ -13,7 +13,7 @@
 .ui-tree-table.ztree li a,
 .ui-tree-table.ztree li a span.ui-cel {
     min-height: 30px;
-    height: auto;
+    height: 100%;
     line-height: 30px;
     padding: 0;
 }
@@ -35,7 +35,7 @@
 .ui-tree-table.ztree li a .ui-name,
 .ui-tree-table.ztree li a .ui-cel,
 .ui-operate{
-    border-right: 1px solid #ddd;
+    border-left: 1px solid #ddd;
     float:left;
     margin:0;
     overflow:hidden;
@@ -113,4 +113,7 @@
 }
 .ui-tree-table.ui-inner-tree.ztree>li:last-child{
     border-bottom: none;
+}
+.ui-tree-table.ui-inner-tree.ztree .ui-name{
+    border-left: none;
 }

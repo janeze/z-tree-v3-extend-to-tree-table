@@ -192,7 +192,7 @@
                 //修改展开按钮结构位置
                 aEle.prepend(switchEle);
                 //修改原来的树控件结构，显示成树的层级间隔
-                aEle.append($('<div class="ui-name" style="width:'+titleWidth+'">' + indentStrs + '</div>').append(aEle.children()));
+                aEle.append($('<div class="ui-cel ui-name" style="width:'+titleWidth+'">' + indentStrs + '</div>').append(aEle.children()));
                 //向树控件添加checkbox
                 if(checkWidth){
                     aEle.prepend('<span class="ui-cel ui-check" style="width:'+checkWidth+'" title="单击时同时按下 Ctrl 键可以选中多个节点"></span>');
