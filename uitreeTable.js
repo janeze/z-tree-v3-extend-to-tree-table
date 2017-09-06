@@ -267,7 +267,7 @@
                 }
             })();
             totalW=totalW;
-            ele=$('<div class="ui-cel ui-inner-tree" style="width:' + totalW+unit + '" id="'+id+'"></div>');
+            ele=$('<ul class="ui-cel ui-inner-tree" style="width:' + totalW+unit + '" id="'+id+'"></ul>');
             //修改子树各个列长度
             (function(){
                 width=initW*100/totalW;
