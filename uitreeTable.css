@@ -49,6 +49,9 @@
 .ui-tree-table.ztree li a .ui-cel{
 	text-align: center;
 }
+.ui-tree-table.ztree li a .ui-cel.ui-name{
+    text-align: left;
+}
 /*树，本体样式*/
 .ui-tree-table.ztree .ui-indent {
     display: inline-block;
